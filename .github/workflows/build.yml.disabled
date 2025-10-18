@@ -1,3 +1,23 @@
+# GitHub Actions Build - Currently Disabled
+#
+# This workflow is disabled due to "Too many open files" errors on GitHub Actions runners.
+# Fabric Loom needs to open many JAR files during the remapping process, which exceeds
+# the file descriptor limits on standard GitHub Actions Ubuntu runners.
+#
+# Attempted fixes that didn't work:
+# - Increased JVM memory to 2G with MaxMetaspaceSize=512m
+# - Disabled parallel builds (--no-parallel --max-workers=1)
+# - Increased ulimit to 65536
+#
+# Alternative solutions:
+# 1. Build locally: ./gradlew build
+# 2. Use self-hosted GitHub Actions runners with higher ulimits
+# 3. Use a different CI platform (CircleCI, GitLab CI, etc.)
+# 4. Reduce mod dependencies/size
+#
+# For now, builds must be done locally. The mod builds successfully on macOS and should
+# work on Linux/Windows with proper Java 21 setup.
+
 name: Build and Test
 
 on:
