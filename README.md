@@ -4,7 +4,7 @@
 [![Fabric](https://img.shields.io/badge/Fabric-0.16.2-blue.svg)](https://fabricmc.net/)
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
 
-A comprehensive Minecraft mod featuring **Godzilla** and **King Kong** as village defenders, custom villager systems, and a banana-based economy.
+A Minecraft mod featuring **Godzilla** and **King Kong** as village defenders, custom villager systems, and a banana-based economy.
 
 ## 🎮 Features
 
