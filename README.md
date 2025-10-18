@@ -205,9 +205,6 @@ open build/reports/tests/test/index.html
 
 1. **Iron Golem Targeting:** Vanilla iron golems may occasionally attack Godzilla/King Kong (one-sided, rare)
 2. **Build Warning:** IronGolemEntityMixin warning is harmless (mixin is disabled)
-3. **Sound Licensing:** Current sounds may need replacement for public distribution
-
-See [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md#known-issues) for full details.
 
 ---
 
