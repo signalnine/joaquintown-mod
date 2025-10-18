@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "joaquintown",
+  "version": "${version}",
+  
+  "name": "Joaquintown",
+  "description": "Spawns a welcoming village at spawn and greets new arrivals.",
+  "authors": [
+    "Joaquintown Team"
+  ],
+  "contact": {
+    "sources": "https://github.com/joaquintown/mc-mod"
+  },
+  
+  "license": "CC0-1.0",
+  
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.joaquintown.mod.JoaquintownMod"
+    ],
+    "client": [
+      "com.joaquintown.mod.JoaquintownModClient"
+    ]
+  },
+  "mixins": [
+    "joaquintown.mixins.json"
+  ],
+  
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "geckolib": ">=4.6"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

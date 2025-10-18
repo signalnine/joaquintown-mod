@@ -1,0 +1,84 @@
+plugins {
+	id 'fabric-loom' version '1.7.2'
+	id 'java'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+java {
+	toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+loom {
+	accessWidenerPath.set(file("src/main/resources/joaquintown.accesswidener"))
+	// splitEnvironmentSourceSets() // Disabled for easier test setup
+}
+
+repositories {
+	maven {
+		name = 'Fabric'
+		url = 'https://maven.fabricmc.net/'
+	}
+	maven {
+		name = 'GeckoLib'
+		url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// GeckoLib for animated entities
+	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.21.1:4.6.1'
+	include 'software.bernie.geckolib:geckolib-fabric-1.21.1:4.6.1'
+
+	// Test dependencies
+	testImplementation "org.junit.jupiter:junit-jupiter:5.10.0"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+		exceptionFormat "full"
+		showStandardStreams = true
+	}
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}"}
+	}
+}
+
+// configure the mod JAR to include fabric.mod.json
+task copyFabricModJson(type: Copy) {
+	from("src/main/resources/fabric.mod.json")
+	into("build/tmp/jar")
+	rename { "fabric.mod.json" }
+}
+
+jar.finalizedBy(copyFabricModJson)

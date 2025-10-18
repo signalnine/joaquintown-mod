@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "joaquintown:banana"
+    },
+    {
+      "item": "joaquintown:banana"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "id": "joaquintown:banana_smoothie",
+    "count": 1
+  }
+}

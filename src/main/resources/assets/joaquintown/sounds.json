@@ -1,0 +1,120 @@
+{
+  "entity.villager.ambient": {
+    "subtitle": "subtitles.entity.villager.ambient",
+    "sounds": [
+      {
+        "name": "joaquintown:entity/villager/ambient1",
+        "weight": 5
+      },
+      {
+        "name": "joaquintown:entity/villager/ambient2",
+        "weight": 1
+      },
+      {
+        "name": "joaquintown:entity/villager/ambient3",
+        "weight": 5
+      }
+    ]
+  },
+  "entity.villager.hurt": {
+    "subtitle": "subtitles.entity.villager.hurt",
+    "sounds": [
+      "joaquintown:entity/villager/hurt1",
+      "joaquintown:entity/villager/hurt2"
+    ]
+  },
+  "entity.villager.death": {
+    "subtitle": "subtitles.entity.villager.death",
+    "sounds": [
+      "joaquintown:entity/villager/death"
+    ]
+  },
+  "entity.villager.trade": {
+    "subtitle": "subtitles.entity.villager.trade",
+    "sounds": [
+      "joaquintown:entity/villager/yes1",
+      "joaquintown:entity/villager/yes2",
+      "joaquintown:entity/villager/yes3"
+    ]
+  },
+  "entity.villager.no": {
+    "subtitle": "subtitles.entity.villager.no",
+    "sounds": [
+      "joaquintown:entity/villager/no1",
+      "joaquintown:entity/villager/no2",
+      "joaquintown:entity/villager/no3"
+    ]
+  },
+  "entity.villager.celebrate": {
+    "subtitle": "subtitles.entity.villager.celebrate",
+    "sounds": [
+      "joaquintown:entity/villager/celebrate"
+    ]
+  },
+  "entity.villager.work_armorer": {
+    "subtitle": "subtitles.entity.villager.work_armorer",
+    "sounds": [
+      "joaquintown:entity/villager/work"
+    ]
+  },
+  "entity.zombie.ambient": {
+    "subtitle": "subtitles.entity.zombie.ambient",
+    "sounds": [
+      "joaquintown:entity/zombie/zombie",
+      "joaquintown:entity/zombie/zombie2",
+      "joaquintown:entity/zombie/zombie3",
+      "joaquintown:entity/zombie/zombie4"
+    ]
+  },
+  "entity.zombie.hurt": {
+    "subtitle": "subtitles.entity.zombie.hurt",
+    "sounds": [
+      "joaquintown:entity/zombie/zombie",
+      "joaquintown:entity/zombie/zombie2"
+    ]
+  },
+  "entity.zombie.death": {
+    "subtitle": "subtitles.entity.zombie.death",
+    "sounds": [
+      "joaquintown:entity/zombie/zombie3"
+    ]
+  },
+  "entity.iron_golem.ambient": {
+    "subtitle": "subtitles.entity.iron_golem.ambient",
+    "sounds": [
+      "joaquintown:entity/iron_golem/roar1",
+      "joaquintown:entity/iron_golem/roar2",
+      "joaquintown:entity/iron_golem/roar3"
+    ]
+  },
+  "entity.iron_golem.hurt": {
+    "subtitle": "subtitles.entity.iron_golem.hurt",
+    "sounds": [
+      "joaquintown:entity/iron_golem/hurt"
+    ]
+  },
+  "entity.iron_golem.death": {
+    "subtitle": "subtitles.entity.iron_golem.death",
+    "sounds": [
+      "joaquintown:entity/iron_golem/roar3"
+    ]
+  },
+  "entity.ravager.ambient": {
+    "subtitle": "subtitles.entity.ravager.ambient",
+    "sounds": [
+      "joaquintown:entity/godzilla/ambient"
+    ]
+  },
+  "entity.ravager.hurt": {
+    "subtitle": "subtitles.entity.ravager.hurt",
+    "sounds": [
+      "joaquintown:entity/godzilla/hurt"
+    ]
+  },
+  "entity.ravager.death": {
+    "subtitle": "subtitles.entity.ravager.death",
+    "sounds": [
+      "joaquintown:entity/godzilla/death"
+    ]
+  }
+}

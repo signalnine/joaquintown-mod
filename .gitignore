@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+!src/main/resources/fabric.mod.json
+!src/main/resources/mymod.mixins.json
+
+# Minecraft development
+run/
+logs/
+*.log
+
+# Local configuration
+.local/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db

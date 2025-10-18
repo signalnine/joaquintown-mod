@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BWB",
+    "BSB",
+    "   "
+  ],
+  "key": {
+    "B": {
+      "item": "joaquintown:banana"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "id": "joaquintown:banana_bread",
+    "count": 1
+  }
+}
