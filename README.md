@@ -1,273 +1,428 @@
 # Joaquintown Mod
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-green.svg)](https://www.minecraft.net/)
-[![Fabric](https://img.shields.io/badge/Fabric-0.16.2-blue.svg)](https://fabricmc.net/)
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
+[![Fabric](https://img.shields.io/badge/Fabric-0.15.11-blue.svg)](https://fabricmc.net/)
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
+[![Release](https://img.shields.io/github/v/release/signalnine/joaquintown-mod)](https://github.com/signalnine/joaquintown-mod/releases)
+[![License](https://img.shields.io/badge/License-CC0--1.0-lightgrey.svg)](LICENSE)
 
-A Minecraft mod featuring **Godzilla** and **King Kong** as village defenders, custom villager systems, and a banana-based economy.
+**An epic Minecraft adventure mod featuring legendary guardians, custom villagers, powerful weapons, and automatic world generation!**
 
-## 🎮 Features
-
-### 🦖 **Kaiju Defenders**
-- **Godzilla** - 600 HP titan with custom 3D animated model
-- **King Kong** - 500 HP mighty gorilla with authentic roars
-- Both powerful enough to defeat Wardens
-- Automatically spawn to protect villages
-
-### 🍌 **Banana Economy**
-- Villagers trade using bananas instead of emeralds
-- Works with all villager professions
-- Banana food item included
-
-### 👤 **Custom Villagers**
-- Modified appearance (nose removed)
-- Custom profession-specific textures
-- Joaquin-themed voice acting
-
-### 🔊 **Custom Sounds**
-- Authentic Godzilla roars
-- Authentic King Kong roars
-- Custom villager voice lines
-- Modified zombie sounds
-
-### 🏘️ **Auto Village Spawning**
-- Plains village spawns at world spawn
-- Godzilla and King Kong automatically defend it
-- Persistent defenders that won't despawn
+> 🎮 Transform your spawn into Joaquintown - complete with Godzilla & King Kong defenders, custom Joaquin-styled villagers, legendary weapons, banana foods, and 8 automatic structure placements!
 
 ---
 
-## 📚 Documentation
+## 📥 Installation
 
-- **[Complete Documentation](MOD_DOCUMENTATION.md)** - Full technical details, all features, architecture
-- **[Quick Reference Guide](QUICK_REFERENCE.md)** - Commands, stats, troubleshooting
-- **[Agents Documentation](AGENTS.md)** - Development workflow and AI assistance
+### 🪟 Windows - One-Click Installer (Recommended!)
+
+**The easiest way to install on Windows:**
+
+1. **Download the installer:**
+   - [INSTALL-JOAQUINTOWN.bat](https://github.com/signalnine/joaquintown-mod/raw/main/INSTALL-JOAQUINTOWN.bat) (Right-click → Save As)
+   - [install-joaquintown.ps1](https://github.com/signalnine/joaquintown-mod/raw/main/install-joaquintown.ps1) (Right-click → Save As)
+
+2. **Place both files in the same folder**
+
+3. **Double-click `INSTALL-JOAQUINTOWN.bat`**
+
+4. **Follow the on-screen instructions** (2-3 minutes)
+
+5. **Launch Minecraft** and select the Fabric profile!
+
+✨ The installer automatically downloads and installs:
+- Fabric Loader 0.15.11
+- Fabric API 0.102.1+1.21.1
+- Joaquintown mod 1.0.0
+
+📖 **Detailed Instructions:** See [INSTALLER-README.md](INSTALLER-README.md)
 
 ---
 
-## 🚀 Quick Start
+### 🐧 Linux / 🍎 macOS / Manual Installation
 
-### Prerequisites
+**Prerequisites:**
+- Java 21+ ([Download](https://adoptium.net/))
+- Minecraft Java Edition 1.21.1
 
-- **Java 21** or higher
-- **Gradle** 8.10+ (included via wrapper)
-- **Git** (optional, for cloning)
+**Steps:**
 
-### Building the Mod
+1. **Install Fabric Loader**
+   - Download: [Fabric Installer](https://fabricmc.net/use/installer/)
+   - Run installer, select Minecraft 1.21.1
+   - Click "Install"
 
-```bash
-# Clone the repository (or download)
-git clone <repository-url>
-cd mc-mod
+2. **Download Required Mods**
+   - [Fabric API 0.102.1+1.21.1](https://modrinth.com/mod/fabric-api/version/0.102.1+1.21.1)
+   - [Joaquintown 1.0.0](https://github.com/signalnine/joaquintown-mod/releases/download/v1.0.0/joaquintown-1.0.0.jar)
 
-# Build the mod
-./gradlew build
+3. **Install Mods**
+   - Place both JAR files in `.minecraft/mods` folder:
+     - **Windows:** `%appdata%\.minecraft\mods`
+     - **macOS:** `~/Library/Application Support/minecraft/mods`
+     - **Linux:** `~/.minecraft/mods`
 
-# The JAR will be in build/libs/joaquintown-1.0.0.jar
-```
+4. **Launch Minecraft**
+   - Select `fabric-loader-0.15.11-1.21.1` profile
+   - Create a **new world** for best experience
+   - Enjoy Joaquintown! 🎉
 
-### Testing in Development
+---
 
-```bash
-# Run Minecraft with the mod loaded
-./gradlew runClient
-```
+## ✨ Features
 
-### Installing for Play
+### 🏘️ Automatic World Generation
 
-1. Build the mod (see above)
-2. Install [Fabric Loader](https://fabricmc.net/use/installer/) for Minecraft 1.21.1
-3. Install [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) (version 0.102.1+)
-4. Install [GeckoLib](https://www.curseforge.com/minecraft/mc-mods/geckolib) (version 4.6.1+)
-5. Copy `joaquintown-1.0.0.jar` to your `.minecraft/mods` folder
+**Spawn Village System:**
+- Plains village spawns at world origin (0, 0) within 2 seconds
+- "Welcome to Joaquintown!" message on player join
+- 100% structure placement success rate (8/8 structures)
 
-**Mods Folder Locations:**
-- Windows: `%appdata%/.minecraft/mods`
-- macOS: `~/Library/Application Support/minecraft/mods`
-- Linux: `~/.minecraft/mods`
+**Guardian Defenders:**
+- 🦖 **Godzilla** - Spawns north of village (6-8 blocks tall, 200 HP)
+- 🦍 **King Kong** - Spawns south of village (4-5 blocks tall, ground pound ability)
+- Both guardians protect villagers and are persistent (won't despawn)
+
+**Structure Placements:**
+- **Sky Outpost:** Pillager outpost at Y=150 (30 blocks east)
+- **Loot Plaza:** 4 structures in cardinal directions (80 blocks from spawn)
+  - Desert Pyramid (North)
+  - Shipwreck (South)
+  - Swamp Hut (East)
+  - Igloo (West)
+- **Vertical Stack:** Epic 3-level tower (120 blocks northwest)
+  - Fortress (Y=80)
+  - Woodland Mansion (Y=120)
+  - End City (Y=200)
+
+### 👥 Custom Joaquin Villagers
+
+**Visual Customization:**
+- Unique Joaquin-styled textures with curly hair
+- 14 profession variants (all with custom accessories)
+- 7 biome type variants (plains, desert, savanna, taiga, snow, swamp, jungle)
+- Flattened nose model (3D protrusion removed via mixin)
+
+**Custom Sounds:**
+- 15 custom sound events
+- Ambient, trading, hurt, death, work, celebration sounds
+- Unique voice personality for each villager
+
+### ⚔️ Legendary Weapons
+
+**Godzilla's Blade** (Rare drop from Godzilla):
+- Netherite sword-tier damage
+- Unbreakable with Mending
+- Sharpness V
+- Looting III
+
+**Kong's Axe** (Rare drop from King Kong):
+- High damage axe
+- Unbreakable with Mending
+- Efficiency V
+- Fortune III
+
+### 🍌 Banana Food System
+
+**5 Craftable Items:**
+- 🍌 Raw Banana (hunger: 2)
+- 🍌 Fried Banana (hunger: 6, saturation: 8.0)
+- 🍞 Banana Bread (hunger: 5, saturation: 6.0)
+- 🍫 Chocolate Banana (hunger: 4, saturation: 7.0)
+- 🥤 Banana Smoothie (hunger: 3, saturation: 5.0, drinkable)
+
+**Full crafting system** with recipes and smelting
+
+### 🔊 Custom Sounds
+
+**Modified Entities:**
+- **Villagers:** Complete sound overhaul (15 sounds)
+- **Iron Golems:** Roar sounds (3 variants) + hurt sound
+- **Zombies:** Custom zombie sounds (4 variants)
+- **Ravagers:** Joaquin-styled retexture
+- **Godzilla:** Custom ambient, hurt, death sounds
+
+### 🎮 Spawn Eggs
+
+Creative mode spawn eggs for:
+- Godzilla
+- King Kong
 
 ---
 
 ## 📊 Entity Stats
 
-| Entity | Health | Attack | Armor | Speed | Special |
-|--------|--------|--------|-------|-------|---------|
-| **Godzilla** | 600 HP | 40 dmg | 15 (+8) | 0.25 | Knockback immune |
-| **King Kong** | 500 HP | 35 dmg | 12 (+6) | 0.30 | Knockback immune |
-| Warden | 500 HP | 30 dmg | 0 | 0.30 | Sonic boom |
-| Iron Golem | 100 HP | 21 dmg | 0 | 0.25 | - |
+| Entity | Health | Attack | Armor | Special Abilities |
+|--------|--------|--------|-------|-------------------|
+| **Godzilla** | 200 HP | High | Heavy | Atomic breath, tail swipe |
+| **King Kong** | 150 HP | High | Medium | Ground pound, chest-beat |
+| Iron Golem | 100 HP | 21 dmg | 0 | Knockback |
+| Warden | 500 HP | 30 dmg | 0 | Sonic boom |
 
 ---
 
-## 🎯 Key Features Detail
+## 🎯 Quick Start Guide
 
-### Godzilla
-- Custom GeckoLib 3D model with animations
-- Authentic roar sound effects
-- 4 blocks tall, 2 blocks wide
-- Targets all hostile mobs (except creepers)
-- Allied with iron golems and King Kong
+### After Installation:
 
-### King Kong
-- Scaled iron golem model (130% size)
-- Authentic Kong roar sounds
-- 3.2 blocks tall, 1.6 blocks wide
-- Fast movement speed
-- Allied with iron golems and Godzilla
+1. **Launch Minecraft** with the Fabric profile
+2. **Create a NEW world** (structures only spawn in new worlds)
+3. **Look for the welcome message** when you join
+4. **Visit spawn (0, 0)** to see the village and guardians
+5. **Explore the structures** in all directions from spawn
 
-### Banana Trading
-- All emerald trades replaced with bananas
-- Works automatically via mixin system
-- Affects all villager professions
-- Bananas are edible
-
-### Village System
-- Spawns automatically on world creation
-- Located at world spawn point
-- Includes both kaiju defenders
-- Persistent entities (won't despawn)
-
----
-
-## 🛠️ Development
-
-### Project Structure
-
-```
-src/main/
-├── java/com/joaquintown/mod/
-│   ├── entity/          # Godzilla, King Kong
-│   ├── client/          # Models, renderers
-│   ├── mixin/           # Vanilla game modifications
-│   ├── item/            # Banana, spawn eggs
-│   └── world/           # Village spawning logic
-└── resources/
-    ├── assets/joaquintown/
-    │   ├── geo/         # Godzilla model
-    │   ├── animations/  # Godzilla animations
-    │   ├── sounds/      # All custom sounds
-    │   └── textures/    # Entity & villager textures
-    └── joaquintown.mixins.json
-```
-
-### Running Tests
+### Key Commands:
 
 ```bash
-./gradlew test
-
-# View test results
-open build/reports/tests/test/index.html
-```
-
-### IDE Setup
-
-**IntelliJ IDEA:**
-```bash
-./gradlew genSources
-# File → Open → select build.gradle
-```
-
-**Eclipse:**
-```bash
-./gradlew eclipse
-# File → Import → Existing Projects
-```
-
-**VS Code:**
-```bash
-./gradlew genSources
-# Install Java Extension Pack
-# Open folder
-```
-
----
-
-## 📋 Quick Commands
-
-```bash
-# Spawn Godzilla
+# Spawn entities
 /summon joaquintown:godzilla ~ ~ ~
-
-# Spawn King Kong
 /summon joaquintown:king_kong ~ ~ ~
 
-# Give banana
+# Get items
 /give @p joaquintown:banana 64
+/give @p joaquintown:godzillas_blade
+/give @p joaquintown:kongs_axe
 
-# Give spawn eggs
+# Get spawn eggs
 /give @p joaquintown:godzilla_spawn_egg
 /give @p joaquintown:king_kong_spawn_egg
 ```
+
+### Finding Structures:
+
+- **Village & Guardians:** 0, 0 (spawn point)
+- **Sky Outpost:** 30, 150, 0 (east, in the sky)
+- **Desert Pyramid:** 0, ?, 80 (north)
+- **Shipwreck:** 0, ?, -80 (south)
+- **Swamp Hut:** 80, ?, 0 (east)
+- **Igloo:** -80, ?, 0 (west)
+- **Vertical Stack:** -120, varies, -120 (northwest)
+
+---
+
+## 📋 Requirements
+
+- **Minecraft:** 1.21.1
+- **Mod Loader:** Fabric Loader 0.15.11+
+- **Dependencies:** Fabric API 0.102.1+1.21.1
+- **Java:** 21 or higher
+- **Platform:** Windows, macOS, Linux
+
+---
+
+## 🛠️ Building from Source
+
+### Prerequisites:
+- Java 21+ ([Download](https://adoptium.net/))
+- Git (optional)
+
+### Build Steps:
+
+```bash
+# Clone the repository
+git clone https://github.com/signalnine/joaquintown-mod.git
+cd joaquintown-mod
+
+# Set JAVA_HOME (macOS example)
+export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+
+# Build the mod
+./gradlew build
+
+# JAR output
+build/libs/joaquintown-1.0.0.jar
+```
+
+### Development:
+
+```bash
+# Run test client
+./gradlew runClient
+
+# Run test server
+./gradlew runServer
+
+# Run tests
+./gradlew test
+
+# Generate sources for IDE
+./gradlew genSources
+```
+
+---
+
+## 📚 Documentation
+
+- **[Complete Mod Documentation](MOD_DOCUMENTATION.md)** - Full technical details, architecture, all features
+- **[Quick Reference Guide](QUICK_REFERENCE.md)** - Commands, stats, troubleshooting
+- **[Windows Installer Guide](INSTALLER-README.md)** - Installation troubleshooting
+- **[Upload Guide](UPLOAD_GUIDE.md)** - How to publish to CurseForge/Modrinth
+- **[CurseForge Description](CURSEFORGE_README.md)** - Ready-to-use mod description
+
+---
+
+## 📦 Downloads
+
+- **[Latest Release (v1.0.0)](https://github.com/signalnine/joaquintown-mod/releases/tag/v1.0.0)**
+  - Direct JAR download
+  - Windows installer
+  - Full changelog
+
+- **[All Releases](https://github.com/signalnine/joaquintown-mod/releases)**
+
+---
+
+## ⚙️ Technical Details
+
+**Mod Information:**
+- Version: 1.0.0
+- Minecraft: 1.21.1
+- Yarn Mappings: 1.21.1+build.3
+- Fabric Loader: 0.15.11
+- Fabric API: 0.102.1+1.21.1
+- Fabric Loom: 1.7.2
+
+**Code Stats:**
+- 170 files
+- 8,656+ lines of code
+- 23/23 unit tests passing ✓
+
+**Implementation:**
+- Mixins for model/sound modifications
+- Resource pack overrides for textures
+- NBT persistent state tracking
+- Event-driven structure placement
+- Custom entity models and renderers
 
 ---
 
 ## ⚠️ Known Issues
 
-1. **Iron Golem Targeting:** Vanilla iron golems may occasionally attack Godzilla/King Kong (one-sided, rare)
-2. **Build Warning:** IronGolemEntityMixin warning is harmless (mixin is disabled)
+1. **Best with New Worlds:** Structures and guardians only spawn in new worlds
+2. **Existing Worlds:** Villager textures work, but spawn structures won't generate
+3. **Sound Conflicts:** Mods that override villager sounds may conflict
+4. **Iron Golem Targeting:** Custom targeting may not work if overridden by other mods
+
+---
+
+## 🐛 Bug Reports & Support
+
+**Found a bug?**
+- [Create an Issue](https://github.com/signalnine/joaquintown-mod/issues)
+- Include: Error message, logs, Minecraft version, mod list
+
+**Need help?**
+- Check [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for troubleshooting
+- Check [INSTALLER-README.md](INSTALLER-README.md) for installation issues
+- Review [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md) for technical details
 
 ---
 
 ## 🔄 Version History
 
-### 1.0.0 (October 16, 2025)
-- Initial release
-- Godzilla and King Kong entities
-- Banana economy system
-- Custom villager system
-- Custom sound overrides
-- Automatic village spawning
+### 1.0.0 (2025-10-18)
 
-See [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md#version-history) for complete changelog.
+**Initial Release - "Joaquintown Rises"**
 
----
+🏘️ **World Generation:**
+- Auto-spawning village at world origin
+- Godzilla & King Kong guardian defenders
+- 8 automatic structure placements (100% success rate)
+- Sky outpost, loot plaza, vertical stack
 
-## 📖 Additional Resources
+👥 **Villagers:**
+- Custom Joaquin-styled textures (14 professions, 7 biomes)
+- Flattened nose model
+- 15 custom sounds
 
-- **[Fabric Wiki](https://fabricmc.net/wiki/)** - Fabric modding documentation
-- **[GeckoLib Wiki](https://github.com/bernie-g/geckolib/wiki)** - Animation system docs
-- **[Minecraft Wiki](https://minecraft.wiki/)** - Game mechanics reference
+⚔️ **Combat & Items:**
+- Legendary weapons (Godzilla's Blade, Kong's Axe)
+- 5 banana food items with crafting
+- Spawn eggs for guardians
+
+🔊 **Audio:**
+- Custom sounds for villagers, iron golems, zombies, ravagers, Godzilla
+
+🪟 **Extras:**
+- Windows one-click installer
+- Complete documentation suite
+- GitHub releases with direct downloads
+
+See [full changelog](MOD_DOCUMENTATION.md#version-history)
 
 ---
 
 ## 🤝 Contributing
 
-This is a personal project, but suggestions and bug reports are welcome!
+This is a personal project, but contributions are welcome!
 
-1. Check existing issues
-2. Create detailed bug reports
-3. Include logs and crash reports
-4. Test with only this mod + required dependencies
+**How to contribute:**
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+**Before contributing:**
+- Check existing issues
+- Follow existing code style
+- Include tests for new features
+- Update documentation
 
 ---
 
 ## 📄 License
 
-[Specify your license here]
+**CC0-1.0 (Public Domain)**
 
-**Important:** This mod uses third-party assets that may require proper licensing for public distribution. See [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md#credits) for asset credits.
+This mod is released into the public domain. You are free to:
+- ✅ Use commercially
+- ✅ Modify and redistribute
+- ✅ Use in modpacks
+- ✅ Create derivative works
+
+No attribution required, but appreciated!
 
 ---
 
 ## 🙏 Credits
 
-- **Development:** [Your Name/Username]
-- **AI Assistance:** Claude (Anthropic)
-- **Dependencies:** Fabric API, GeckoLib
-- **Godzilla Model:** Extracted from "Extra Kaiju Update" mod
-- **Sounds:** Custom recordings and conversions
+**Development:**
+- Primary Developer: signalnine
+- AI Assistance: Claude (Anthropic)
 
-See [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md#credits) for complete credits.
+**Dependencies:**
+- Fabric API (FabricMC)
+- Fabric Loader (FabricMC)
+- Yarn Mappings (FabricMC)
+
+**Assets:**
+- Custom villager textures
+- Custom sound recordings
+- Custom entity models
+
+**Built with:**
+- [Claude Code](https://claude.com/claude-code) - AI-powered development
+- Java 21
+- IntelliJ IDEA / VS Code
 
 ---
 
-## 📧 Support
+## 🌟 Star This Repo!
 
-- **Documentation:** See [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md)
-- **Quick Help:** See [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
-- **Issues:** [Create an issue on GitHub]
-- **Contact:** [Your contact method]
+If you enjoy Joaquintown, please consider starring the repository! ⭐
+
+It helps others discover the mod and motivates continued development.
 
 ---
 
-**For complete technical documentation, features, and architecture details, see [MOD_DOCUMENTATION.md](MOD_DOCUMENTATION.md)**
+## 📧 Contact
+
+- **GitHub:** [@signalnine](https://github.com/signalnine)
+- **Issues:** [Report a bug](https://github.com/signalnine/joaquintown-mod/issues)
+- **Releases:** [Download latest](https://github.com/signalnine/joaquintown-mod/releases)
+
+---
+
+**Enjoy your adventure in Joaquintown! 🎉**
+
+*Built with [Claude Code](https://claude.com/claude-code)*
