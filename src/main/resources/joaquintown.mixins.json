@@ -11,7 +11,8 @@
     "TradeOfferMixin"
   ],
   "client": [
-    "VillagerModelMixin"
+    "VillagerModelMixin",
+    "WolfModelMixin"
   ],
   "server": [],
   "minVersion": "0.8"
