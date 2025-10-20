@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cocoa_stage1",
+  "textures": {
+    "particle": "joaquintown:block/bananas_stage1",
+    "cocoa": "joaquintown:block/bananas_stage1"
+  }
+}

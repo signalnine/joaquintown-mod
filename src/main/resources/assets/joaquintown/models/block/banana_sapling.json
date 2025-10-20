@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "joaquintown:block/banana_sapling"
+  }
+}

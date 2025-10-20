@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
       "item": "minecraft:dried_kelp"
@@ -8,11 +9,11 @@
       "item": "minecraft:dried_kelp"
     },
     {
-      "tag": "minecraft:fishes"
+      "item": "minecraft:cod"
     }
   ],
   "result": {
-    "id": "joaquintown:seaweed_wrap",
+    "item": "joaquintown:seaweed_wrap",
     "count": 1
   }
 }

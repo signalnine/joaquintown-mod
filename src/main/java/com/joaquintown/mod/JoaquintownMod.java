@@ -1,5 +1,6 @@
 package com.joaquintown.mod;
 
+import com.joaquintown.mod.block.ModBlocks;
 import com.joaquintown.mod.entity.GodzillaEntity;
 import com.joaquintown.mod.entity.KingKongEntity;
 import com.joaquintown.mod.init.ModEntities;
@@ -55,6 +56,10 @@ public class JoaquintownMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Joaquintown mod initializing.");
+
+		// Register custom blocks
+		ModBlocks.registerModBlocks();
+		LOGGER.info("Custom blocks registered.");
 
 		// Register custom items
 		ModItems.registerModItems();

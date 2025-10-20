@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "joaquintown:bananas",
+                  "properties": {
+                    "age": "2"
+                  }
+                }
+              ],
+              "name": "joaquintown:banana",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 2.0,
+                    "max": 3.0
+                  },
+                  "add": false
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "joaquintown:banana"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "misc",
   "ingredients": [
     {
       "item": "joaquintown:banana"
@@ -12,7 +13,7 @@
     }
   ],
   "result": {
-    "id": "joaquintown:chocolate_banana",
+    "item": "joaquintown:chocolate_banana",
     "count": 1
   }
 }

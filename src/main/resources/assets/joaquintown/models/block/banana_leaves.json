@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "joaquintown:block/banana_leaves"
+  }
+}

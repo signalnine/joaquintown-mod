@@ -17,7 +17,8 @@
     }
   },
   "result": {
-    "id": "joaquintown:banana_bread",
+    "item": "joaquintown:banana_bread",
     "count": 1
-  }
+  },
+  "category": "misc"
 }
