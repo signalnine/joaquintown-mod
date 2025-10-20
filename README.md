@@ -33,7 +33,7 @@
 ✨ The installer automatically downloads and installs:
 - Fabric Loader 0.15.11
 - Fabric API 0.102.1+1.21.1
-- Joaquintown mod 1.0.0
+- Joaquintown mod 1.0.2
 
 📖 **Detailed Instructions:** See [INSTALLER-README.md](INSTALLER-README.md)
 
@@ -54,7 +54,7 @@
 
 2. **Download Required Mods**
    - [Fabric API 0.102.1+1.21.1](https://modrinth.com/mod/fabric-api/version/0.102.1+1.21.1)
-   - [Joaquintown 1.0.0](https://github.com/signalnine/joaquintown-mod/releases/download/v1.0.0/joaquintown-1.0.0.jar)
+   - [Joaquintown 1.0.2](https://github.com/signalnine/joaquintown-mod/releases/download/v1.0.2/joaquintown-1.0.2.jar)
 
 3. **Install Mods**
    - Place both JAR files in `.minecraft/mods` folder:
@@ -230,7 +230,7 @@ export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
 ./gradlew build
 
 # JAR output
-build/libs/joaquintown-1.0.0.jar
+build/libs/joaquintown-1.0.2.jar
 ```
 
 ### Development:
@@ -263,7 +263,7 @@ build/libs/joaquintown-1.0.0.jar
 
 ## 📦 Downloads
 
-- **[Latest Release (v1.0.0)](https://github.com/signalnine/joaquintown-mod/releases/tag/v1.0.0)**
+- **[Latest Release (v1.0.2)](https://github.com/signalnine/joaquintown-mod/releases/tag/v1.0.2)**
   - Direct JAR download
   - Windows installer
   - Full changelog
@@ -275,7 +275,7 @@ build/libs/joaquintown-1.0.0.jar
 ## ⚙️ Technical Details
 
 **Mod Information:**
-- Version: 1.0.0
+- Version: 1.0.2
 - Minecraft: 1.21.1
 - Yarn Mappings: 1.21.1+build.3
 - Fabric Loader: 0.15.11
@@ -319,6 +319,24 @@ build/libs/joaquintown-1.0.0.jar
 ---
 
 ## 🔄 Version History
+
+### 1.0.2 (2025-10-20)
+
+**Banana Trees & Recipe Fixes**
+
+🍌 **New Features:**
+- Complete banana tree system (sapling, leaves, growing bananas)
+- Seaweed wraps food item
+- Fixed all crafting recipes for Minecraft 1.21.1
+- Baby kaiju rendering and sounds
+
+### 1.0.1 (2025-10-18)
+
+**The Bella Update**
+
+🐕 **Wolf Customizations:**
+- Corgi-style short legs for all wolves
+- Bella texture for tamed wolves
 
 ### 1.0.0 (2025-10-18)
 
