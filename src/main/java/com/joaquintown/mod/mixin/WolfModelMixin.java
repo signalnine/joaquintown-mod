@@ -39,22 +39,18 @@ public abstract class WolfModelMixin {
         float legScale = 0.6f;
 
         if (this.rightHindLeg != null) {
-            this.rightHindLeg.pivotY += 3.0f; // Move pivot point up to keep paws on ground
             scaleModelPart(this.rightHindLeg, 1.0f, legScale, 1.0f);
         }
 
         if (this.leftHindLeg != null) {
-            this.leftHindLeg.pivotY += 3.0f;
             scaleModelPart(this.leftHindLeg, 1.0f, legScale, 1.0f);
         }
 
         if (this.rightFrontLeg != null) {
-            this.rightFrontLeg.pivotY += 3.0f;
             scaleModelPart(this.rightFrontLeg, 1.0f, legScale, 1.0f);
         }
 
         if (this.leftFrontLeg != null) {
-            this.leftFrontLeg.pivotY += 3.0f;
             scaleModelPart(this.leftFrontLeg, 1.0f, legScale, 1.0f);
         }
     }
