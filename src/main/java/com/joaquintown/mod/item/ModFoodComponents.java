@@ -53,4 +53,13 @@ public class ModFoodComponents {
             .saturationModifier(0.75f)
             .snack() // Can be eaten faster
             .build();
+
+    /**
+     * Seaweed Wrap - nutritious ocean-based food.
+     * Restores 5 hunger (2.5 drumsticks) and 6.0 saturation.
+     */
+    public static final FoodComponent SEAWEED_WRAP = new FoodComponent.Builder()
+            .nutrition(5)
+            .saturationModifier(0.6f)
+            .build();
 }

@@ -28,7 +28,12 @@ public class KingKongRenderer extends MobEntityRenderer<KingKongEntity, KingKong
 
     @Override
     protected void scale(KingKongEntity entity, MatrixStack matrixStack, float tickDelta) {
-        matrixStack.scale(SCALE, SCALE, SCALE);
+        // Scale down baby King Kongs to 50% size
+        if (entity.isBaby()) {
+            matrixStack.scale(SCALE * 0.5f, SCALE * 0.5f, SCALE * 0.5f);
+        } else {
+            matrixStack.scale(SCALE, SCALE, SCALE);
+        }
         super.scale(entity, matrixStack, tickDelta);
     }
 }

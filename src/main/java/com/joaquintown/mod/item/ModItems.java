@@ -48,6 +48,12 @@ public class ModItems {
             new Item(new Item.Settings().food(ModFoodComponents.BANANA_SMOOTHIE).maxCount(16)));
 
     /**
+     * Seaweed Wrap - nutritious ocean-based food item.
+     */
+    public static final Item SEAWEED_WRAP = registerItem("seaweed_wrap",
+            new Item(new Item.Settings().food(ModFoodComponents.SEAWEED_WRAP)));
+
+    /**
      * Godzilla spawn egg - spawns Godzilla when used.
      * Colors: Dark gray (0x2d3e2d) with charcoal spots (0x1a1a1a)
      */
@@ -105,6 +111,7 @@ public class ModItems {
             entries.add(FRIED_BANANA);
             entries.add(CHOCOLATE_BANANA);
             entries.add(BANANA_SMOOTHIE);
+            entries.add(SEAWEED_WRAP);
         });
 
         // Add spawn eggs to the Spawn Eggs creative tab

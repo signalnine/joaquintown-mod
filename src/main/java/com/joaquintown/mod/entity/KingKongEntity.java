@@ -1,25 +1,38 @@
 package com.joaquintown.mod.entity;
 
+import com.joaquintown.mod.init.ModEntities;
 import com.joaquintown.mod.item.ModItems;
 import com.joaquintown.mod.sound.ModSounds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * King Kong entity - a mighty gorilla that protects villages like an iron golem.
@@ -27,9 +40,21 @@ import net.minecraft.world.World;
  */
 public class KingKongEntity extends HostileEntity {
 
+    private static final TrackedData<Boolean> BABY = DataTracker.registerData(KingKongEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(ModItems.BANANA);
+
+    private int loveTicks;
+    private int breedingAge;
+
     public KingKongEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = 40;
+    }
+
+    @Override
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
+        builder.add(BABY, false);
     }
 
     /**
@@ -96,8 +121,214 @@ public class KingKongEntity extends HostileEntity {
     }
 
     @Override
+    public float getSoundPitch() {
+        // Baby King Kongs have higher pitched sounds (1.5x higher)
+        return this.isBaby() ? super.getSoundPitch() * 1.5f : super.getSoundPitch();
+    }
+
+    @Override
     public int getMinAmbientSoundDelay() {
         return 400; // 20 seconds minimum (default is 80 ticks / 4 seconds)
+    }
+
+    /**
+     * Check if the given item can be used to breed King Kong.
+     */
+    public boolean isBreedingItem(ItemStack stack) {
+        return BREEDING_INGREDIENT.test(stack);
+    }
+
+    /**
+     * Handle player interaction - feeding bananas to breed.
+     */
+    @Override
+    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+
+        if (this.isBreedingItem(itemStack)) {
+            // Can't breed babies or if already in love mode
+            if (this.isBaby() || this.isInLove()) {
+                return ActionResult.PASS;
+            }
+
+            // Consume item in survival mode
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+
+            // Enter love mode
+            this.lovePlayer(player);
+
+            // Spawn heart particles
+            if (!this.getWorld().isClient) {
+                for (int i = 0; i < 7; i++) {
+                    double d = this.random.nextGaussian() * 0.02;
+                    double e = this.random.nextGaussian() * 0.02;
+                    double f = this.random.nextGaussian() * 0.02;
+                    ((ServerWorld)this.getWorld()).spawnParticles(
+                        ParticleTypes.HEART,
+                        this.getParticleX(1.0),
+                        this.getRandomBodyY() + 0.5,
+                        this.getParticleZ(1.0),
+                        1, d, e, f, 0.0
+                    );
+                }
+            }
+
+            return ActionResult.success(this.getWorld().isClient);
+        }
+
+        return super.interactMob(player, hand);
+    }
+
+    /**
+     * Set King Kong into love mode (ready to breed).
+     */
+    public void lovePlayer(@Nullable PlayerEntity player) {
+        this.loveTicks = 600; // 30 seconds
+    }
+
+    /**
+     * Check if King Kong is in love mode.
+     */
+    public boolean isInLove() {
+        return this.loveTicks > 0;
+    }
+
+    /**
+     * Tick method - handles breeding logic.
+     */
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.isInLove()) {
+            this.loveTicks--;
+
+            // Spawn heart particles while in love
+            if (this.loveTicks % 10 == 0 && !this.getWorld().isClient) {
+                double d = this.random.nextGaussian() * 0.02;
+                double e = this.random.nextGaussian() * 0.02;
+                double f = this.random.nextGaussian() * 0.02;
+                ((ServerWorld)this.getWorld()).spawnParticles(
+                    ParticleTypes.HEART,
+                    this.getParticleX(1.0),
+                    this.getRandomBodyY() + 0.5,
+                    this.getParticleZ(1.0),
+                    1, d, e, f, 0.0
+                );
+            }
+
+            // Try to breed with nearby King Kong in love mode
+            if (!this.getWorld().isClient && this.loveTicks % 20 == 0) {
+                this.tryToBreed();
+            }
+        }
+    }
+
+    /**
+     * Try to find another King Kong in love mode and breed.
+     */
+    private void tryToBreed() {
+        if (!(this.getWorld() instanceof ServerWorld serverWorld)) {
+            return;
+        }
+
+        // Find nearby King Kongs in love mode
+        var nearbyKongs = serverWorld.getEntitiesByClass(
+            KingKongEntity.class,
+            this.getBoundingBox().expand(8.0),
+            other -> other != this && other.isInLove() && !other.isBaby()
+        );
+
+        if (!nearbyKongs.isEmpty()) {
+            KingKongEntity mate = nearbyKongs.get(0);
+
+            // Create baby King Kong
+            this.breed(serverWorld, mate);
+
+            // Reset love mode for both parents
+            this.loveTicks = 0;
+            mate.loveTicks = 0;
+
+            // Set breeding cooldown (5 minutes)
+            this.breedingAge = 6000;
+            mate.breedingAge = 6000;
+        }
+    }
+
+    /**
+     * Breed with another King Kong and create a baby.
+     */
+    private void breed(ServerWorld world, KingKongEntity mate) {
+        KingKongEntity baby = ModEntities.KING_KONG.create(world);
+        if (baby != null) {
+            baby.setBaby(true);
+            baby.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), 0.0f, 0.0f);
+            world.spawnEntity(baby);
+
+            // Spawn lots of hearts for successful breeding
+            for (int i = 0; i < 20; i++) {
+                double d = this.random.nextGaussian() * 0.02;
+                double e = this.random.nextGaussian() * 0.02;
+                double f = this.random.nextGaussian() * 0.02;
+                world.spawnParticles(
+                    ParticleTypes.HEART,
+                    this.getParticleX(1.0),
+                    this.getRandomBodyY() + 0.5,
+                    this.getParticleZ(1.0),
+                    1, d, e, f, 0.0
+                );
+            }
+        }
+    }
+
+    /**
+     * Check if this King Kong is a baby.
+     */
+    public boolean isBaby() {
+        return this.dataTracker.get(BABY);
+    }
+
+    /**
+     * Set whether this King Kong is a baby.
+     */
+    public void setBaby(boolean baby) {
+        this.dataTracker.set(BABY, baby);
+        this.calculateDimensions();
+    }
+
+    @Override
+    public void onTrackedDataSet(TrackedData<?> data) {
+        if (BABY.equals(data)) {
+            this.calculateDimensions();
+        }
+        super.onTrackedDataSet(data);
+    }
+
+    @Override
+    public void calculateDimensions() {
+        double d = this.getX();
+        double e = this.getY();
+        double f = this.getZ();
+        super.calculateDimensions();
+        this.setPosition(d, e, f);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("IsBaby", this.isBaby());
+        nbt.putInt("LoveTicks", this.loveTicks);
+        nbt.putInt("BreedingAge", this.breedingAge);
+    }
+
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setBaby(nbt.getBoolean("IsBaby"));
+        this.loveTicks = nbt.getInt("LoveTicks");
+        this.breedingAge = nbt.getInt("BreedingAge");
     }
 
     /**
